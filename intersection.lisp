@@ -1,0 +1,16 @@
+(defun test (el L)
+    (cond ((null L) nil)
+          ((equal el (car L)) t)
+          (t (test el (cdr L)))
+    )
+)
+
+(defun guess (A B)
+    (cond ((null A) '())
+          ((null B) '())
+          ((test (car A) B) (cons (car A) (guess (cdr A) B)))
+          (t (guess (cdr A) B))
+    )
+)
+
+(guess '(1 2 3) '(1 2 3 4))
